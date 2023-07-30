@@ -17,7 +17,22 @@ iii) curl to get the task info Method: GET
    curl - http://localhost:3001/tasks/:id
 
 iv)  curl to modify the task Method : POST
-curl - localhost:3008/tasks/:id
+   curl --location 'localhost:3008/tasks/:id' \
+--header 'Content-Type: application/json' \
+--data '
+    { "taskId" : 4,
+      "title" : "Assignment",
+      "due date" : "01-08-2023",
+      "status" : "in Progress"
+    }
 
-v) curl to update the task Method : PUT
-curl - 'localhost:3008/tasks/3'
+
+v) curl to update the task Methodd : PUT
+curl --location --request PUT 'localhost:3008/tasks/3' \
+--header 'Content-Type: application/json' \
+--data '
+    { "taskId" : 3,
+      "title" : "Fil1e",
+      "due date" : "01-08-2023",
+      "status" : "in Progress"
+    }
