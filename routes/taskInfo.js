@@ -2,6 +2,8 @@ const taskRoutes = require('express').Router();
 const taskData = require('../task.json');
 const bodyParser = require('body-parser');
 const path = require('path');
+const validator = require('../helpers/validator.js');
+const taskInfo  = require('../index.js');
 const fs = require('fs');
 
 taskRoutes.use(bodyParser.json());
@@ -28,6 +30,7 @@ taskRoutes.delete('/:id', (req, res) => {
 
 taskRoutes.post('/', (req, res) => {
   const taskDetails = req.body;
+  if(validator.validateTaskInfo(taskDetails, taskData).status){
   let writePath = path.join(__dirname, '..', 'task.json');
   let taskDataModified = JSON.parse(JSON.stringify(taskData));
   taskDataModified.tasks.push(taskDetails);
@@ -36,8 +39,10 @@ taskRoutes.post('/', (req, res) => {
     return res.status(200).json({"message":"Task has been created successfully"});
   } catch(err){
     return res.status(500).json({"message":"write has failed, try back again later"});
-
-  }
+  } }
+    else {
+      return res.status(400).json(validator.validateTaskInfo(taskInfo, taskId));
+    }
 });
 
 taskRoutes.put('/:id', (req, res) => {
