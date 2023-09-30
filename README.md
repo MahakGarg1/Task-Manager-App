@@ -9,14 +9,25 @@ Implement a RESTful API with the following endpoints:
 5) DELETE /tasks/:Id: Delete a task by its ID.
 
 Commands to be run: 
-i)  Installing the packages - npm install.
+## i)  Installing the packages 
+```
+npm install.
+```
 
-ii) Starting the server - nodemon index.js.
+## ii) Starting the server 
+```
+nodemon index.js.
+````
 
-iii) curl to get the task info Method: GET
+## iii) curl to get the task info Method: 
+   ```
+   GET
    curl - http://localhost:3001/tasks/:id
+```
 
-iv)  curl to modify the task Method : POST
+## iv)  curl to modify the task Method : 
+```
+POST
    curl --location 'localhost:3008/tasks/:id' \
 --header 'Content-Type: application/json' \
 --data '
@@ -25,9 +36,11 @@ iv)  curl to modify the task Method : POST
       "due date" : "01-08-2023",
       "status" : "in Progress"
     }
+```
 
-
-v) curl to update the task Methodd : PUT
+## v) curl to update the task Methodd : 
+```
+PUT
 curl --location --request PUT 'localhost:3008/tasks/3' \
 --header 'Content-Type: application/json' \
 --data '
@@ -36,3 +49,4 @@ curl --location --request PUT 'localhost:3008/tasks/3' \
       "due date" : "01-08-2023",
       "status" : "in Progress"
     }
+````
